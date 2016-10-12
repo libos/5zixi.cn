@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#redis-server Config/redis.conf
+QUEUE=jobs APP_INCLUDE="./Controller/Job/resque.php" php Console/resque >> ./tmp/logs/resque.log 2>&1 &
+Console/cake CakeResque.CakeResque start
+Console/cake CakeResque.CakeResque startscheduler

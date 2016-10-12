@@ -1,0 +1,15 @@
+#!/usr/bin/env perl
+$str=`ps -o pid,command | grep resque`;
+#print $str;
+my @array=split(/\n/,$str);
+my @r = grep(/Console/,@array);
+my @arr=split(/\s/,@r[0]);
+my $pid = @arr[1];
+print $pid;
+my $kill = `kill -9 $pid`;
+print $kill;
+my $restart = `QUEUE=jobs APP_INCLUDE="./Controller/Job/resque.php" php Console/resque >> ./tmp/logs/resque.log 2>&1 &`;
+
+# `Console/cake CakeResque.CakeResque stop`;
+# `Console/cake CakeResque.CakeResque start`;
+# `Console/cake CakeResque.CakeResque startscheduler`;

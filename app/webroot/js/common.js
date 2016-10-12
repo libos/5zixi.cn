@@ -1,0 +1,1 @@
+function AddTo(a){$.ajax({url:"/books/collect",type:"post",dataType:"html",data:{bid:a},success:function(a){"OK"==a&&alert("收藏成功")}})}$(document).ready(function(){$(".addto").click(function(){$.ajax({url:"/books/collect",type:"post",dataType:"html",success:function(a){"OK"==a&&alert("收藏成功")}})})});
